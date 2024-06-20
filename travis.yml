@@ -16,5 +16,9 @@ after_success:
   - docker build -t greddy0407/multi-server ./server
   - docker build -t greddy0407/multi-worker ./worker
   # Log in to the docker CLI
-  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Take those imaes and push them to docker
+  - docker push greddy0407/multi-client
+  - docker push greddy0407/multi-nginx
+  - docker push greddy0407/multi-server
+  - docker push greddy0407/multi-worker
